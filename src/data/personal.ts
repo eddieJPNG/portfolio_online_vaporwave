@@ -9,7 +9,7 @@ export const personalInfo: PersonalInfo = {
   telefone: '+55 86 994268973',
   endereco: 'Ilha Grande, Piauí, BR',
   resumo:
-    'Desenvolvedor Back-End com foco em Python e Node.js, atuando na criação de APIs, sistemas web e integração com banco de dados. Tenho base em Full Stack, com conhecimento em Front-end, o que facilita comunicação entre camadas e entrega de soluções completas. Sempre com foco na escalabilidade do projeto, integração contínua de trabalho e resolução de problemas.',
+    'Desenvolvedor centrado em criação e desenvolvimento de soluções e sistemas, Com experiência prática no uso de tecnologias modernas, como FastAPI e Flask(Python), NestJS(Typescript/NodeJS), Bancos de dados Relacionais (MySQL e Sqlite), Infraestrutura e versionamento com Git e Github e base em tecnologias de frontend (HTML5, CSS3, Tailwinde React). Aplicando técnicas de Clean code, escalabilidade e modularização em camadas.',
   imagem: getProfileImage(),
   linkedin: SOCIAL_LINKS.linkedin,
   github: SOCIAL_LINKS.github,
