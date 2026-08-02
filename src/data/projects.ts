@@ -68,4 +68,17 @@ export const projects: Project[] = [
     destaque: true,
     categoria: 'Web',
   },
+  {
+    id: 'lubanAPI',
+    titulo: 'Lu Ban API',
+    descricao: 'Projeto para estudo do ecossistema backend typescript ',
+    descricaoLonga:
+      'Lu Ban API é um projeto para desenvolvimento pessoal e profissional de vários ecossistemas do campo backend e typescript com base numa API de usuários. Com seus primeiro passo sendo uma API RESTful para CRUD de usuários, desenvolvida com boas práticas de arquitetura e design de software. O projeto utiliza NestJS como framework, Prisma como ORM e SQLite como banco de dados, com documentação Swagger integrada.',
+    tecnologias: ['NestJS', 'Prisma', 'SQLite', 'Swagger', 'TypeScript', 'Jest', 'NodeJS'],
+    periodo: 'mar. 2026 — ago. 2026',
+    githubUrl: 'https://github.com/eddieJPNG/lu_banAPI',
+    imagem: getProjectImage('lubanAPI'),
+    destaque: true,
+    categoria: 'Web',
+  },
 ];
