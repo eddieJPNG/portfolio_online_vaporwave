@@ -22,7 +22,7 @@ export const projects: Project[] = [
     descricaoLonga:
       'Sistema desenvolvido como prática de criação de Dapps na rede Blockchain Sui, na linguagem Move, com deploy do smart-contract direto na rede Mainnet.',
     tecnologias: ['Move', 'Sui', 'HTML5', 'CSS3', 'JavaScript'],
-    periodo: 'jan. 2025 — dez. 2025',
+    periodo: 'jan. 2025 — fev. 2025',
     githubUrl: 'https://github.com/eddieJPNG/Sui_Nft_Hub_Project',
     imagem: getProjectImage('nft-hub'),
     destaque: true,
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     descricao: 'Sistema de monitoramento de convênios de estágio',
     descricaoLonga:
       'Aplicação desktop para gerenciamento de convênios de estágio da Universidade Estadual do Piauí (UESPI), com painéis distintos por perfil de acesso, geração de documentos e controle de vencimentos.',
-    tecnologias: ['Python', 'FastAPI', 'SQLAlchemy', 'Flask', 'Flet', 'MySQL'],
+    tecnologias: ['Python', 'SQLAlchemy', 'Flask', 'Flet', 'MySQL'],
     periodo: 'mai. 2026 — jun. 2026',
     githubUrl: 'https://github.com/pedroaguiarcd/sistema-convenios',
     imagem: getProjectImage('convmonitor'),
