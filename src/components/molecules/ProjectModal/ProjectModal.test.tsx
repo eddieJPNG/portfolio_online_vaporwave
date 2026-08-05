@@ -11,7 +11,7 @@ const mockProject: Project = {
   tecnologias: ['React', 'TypeScript', 'Vite'],
   periodo: 'jan. 2024 - jun. 2024',
   githubUrl: 'https://github.com/test/project',
-  imagem: '/images/test.png',
+  imagem: '/images/test.webp',
   destaque: true,
   categoria: 'Web',
 };

@@ -6,7 +6,7 @@ import { ProjectModal } from '../../molecules/ProjectModal';
 import { AnimatedSection } from '../../atoms/AnimatedSection';
 import { type Project } from '../../../types';
 import { SOCIAL_LINKS } from '../../../utils/constants';
-import icebergIcon from '../../../assets/icons-decorative/iceberg.png';
+import icebergIcon from '../../../assets/icons-decorative/iceberg.webp';
 import { motion } from 'framer-motion';
 
 const PROJECT_CATEGORIES = [...new Set(projects.map((p) => p.categoria))] as const;

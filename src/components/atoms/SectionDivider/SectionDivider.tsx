@@ -1,5 +1,5 @@
 import { type HTMLAttributes, forwardRef } from 'react';
-import pointBg from '../../../assets/backgrounds/point.png';
+import pointBg from '../../../assets/backgrounds/point.webp';
 import romanBg from '../../../assets/decorative/roman.webp';
 
 export interface SectionDividerProps extends HTMLAttributes<HTMLDivElement> {

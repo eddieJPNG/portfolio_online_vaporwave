@@ -3,7 +3,7 @@ import { SKILL_CATEGORIES } from '../../../utils/constants';
 import { SkillBadge } from '../../molecules';
 import { AnimatedSection } from '../../atoms/AnimatedSection';
 import tokyo from '../../../assets/backgrounds/tokyo.gif';
-import addiIcon from '../../../assets/icons-decorative/additive-synthesis.png';
+import addiIcon from '../../../assets/icons-decorative/additive-synthesis.webp';
 
 export const Skills = () => {
   return (

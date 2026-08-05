@@ -5,7 +5,7 @@ import { AnimatedSection } from '../../atoms/AnimatedSection';
 import { contactFormSchema, type ContactFormData } from '../../../validations/contact';
 import { SITE_CONFIG } from '../../../utils/constants';
 import { useRateLimit } from '../../../hooks/useRateLimit';
-import chatIcon from '../../../assets/icons-decorative/chat.png';
+import chatIcon from '../../../assets/icons-decorative/chat.webp';
 import heroStreet from '../../../assets/backgrounds/street.gif';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';

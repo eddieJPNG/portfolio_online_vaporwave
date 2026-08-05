@@ -1,6 +1,6 @@
 import { experiences } from '../../../data/experiences';
 import { AnimatedSection } from '../../atoms/AnimatedSection';
-import shapeIcon from '../../../assets/icons-decorative/shape.png';
+import shapeIcon from '../../../assets/icons-decorative/shape.webp';
 
 export const Experience = () => {
   return (

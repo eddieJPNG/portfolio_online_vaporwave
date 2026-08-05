@@ -14,14 +14,14 @@ describe('SkillBadge', () => {
   });
 
   it('renders with iconPath as img', () => {
-    render(<SkillBadge name="React" iconPath="/test-icon.png" />);
+    render(<SkillBadge name="React" iconPath="/test-icon.webp" />);
     const img = screen.getByRole('img', { name: 'React' });
     expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', '/test-icon.png');
+    expect(img).toHaveAttribute('src', '/test-icon.webp');
   });
 
   it('prefers iconPath over icon', () => {
-    render(<SkillBadge name="React" icon="⚛️" iconPath="/test-icon.png" />);
+    render(<SkillBadge name="React" icon="⚛️" iconPath="/test-icon.webp" />);
     const img = screen.getByRole('img', { name: 'React' });
     expect(img).toBeInTheDocument();
     expect(screen.queryByText('⚛️')).not.toBeInTheDocument();
