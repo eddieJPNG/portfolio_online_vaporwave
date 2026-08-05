@@ -10,7 +10,7 @@ describe('About', () => {
 
   it('renders the personal summary', () => {
     render(<About />);
-    expect(screen.getByText(/Desenvolvedor Back-End com foco em Python/)).toBeInTheDocument();
+    expect(screen.getByText(/Desenvolvedor centrado em criação/)).toBeInTheDocument();
   });
 
   it('renders GitHub link', () => {

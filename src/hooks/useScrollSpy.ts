@@ -28,7 +28,7 @@ export const useScrollSpy = (ids: string[], offset = 100) => {
     return () => {
       observer.disconnect();
     };
-  }, [idsKey, offset]);
+  }, [ids, idsKey, offset]);
 
   return activeId;
 };

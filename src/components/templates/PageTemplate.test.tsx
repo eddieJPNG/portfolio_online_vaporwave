@@ -18,7 +18,7 @@ describe('PageTemplate', () => {
         <div>Content</div>
       </PageTemplate>
     );
-    expect(screen.getByText('Portfolio')).toBeInTheDocument();
+    expect(screen.getByText(/Edson\.dev - Portfólio/)).toBeInTheDocument();
   });
 
   it('passes onThemeToggle to Header', () => {
@@ -72,6 +72,6 @@ describe('PageTemplate', () => {
       </PageTemplate>
     );
     expect(screen.getByText('Content')).toBeInTheDocument();
-    expect(screen.getByText('Portfolio')).toBeInTheDocument();
+    expect(screen.getByText(/Edson\.dev - Portfólio/)).toBeInTheDocument();
   });
 });

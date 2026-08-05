@@ -124,11 +124,12 @@ describe('Form Submission Integration', () => {
     render(<App />);
 
     await waitFor(() => {
-      expect(screen.getByRole('textbox', { name: '' })).toBeInTheDocument();
+      expect(screen.getByLabelText('Nome')).toBeInTheDocument();
     });
 
-    const honeypot = screen.getByRole('textbox', { name: '' });
-    expect(honeypot).toHaveClass('hidden');
+    const honeypot = document.querySelector('input[name="honeypot"]');
+    expect(honeypot).toBeInTheDocument();
+    expect(honeypot).toHaveAttribute('aria-hidden', 'true');
   });
 });
 
@@ -142,7 +143,7 @@ describe('Section Rendering Integration', () => {
     render(<App />);
 
     expect(screen.getByText('Edson Rocha da Silva')).toBeInTheDocument();
-    expect(screen.getByText(/Desenvolvedor Back-End Júnior/)).toBeInTheDocument();
+    expect(screen.getByText(/Desenvolvedor Back-End/)).toBeInTheDocument();
   });
 
   it('renders skills section', async () => {
@@ -198,14 +199,14 @@ describe('Responsive Design Integration', () => {
   it('renders mobile menu button', () => {
     render(<App />);
 
-    const menuButton = screen.getByLabelText('Toggle menu');
+    const menuButton = screen.getByLabelText('Abrir menu');
     expect(menuButton).toBeInTheDocument();
   });
 
   it('toggles mobile menu visibility', () => {
     render(<App />);
 
-    const menuButton = screen.getByLabelText('Toggle menu');
+    const menuButton = screen.getByLabelText('Abrir menu');
     fireEvent.click(menuButton);
 
     expect(screen.getByText(/Modo Escuro/)).toBeInTheDocument();

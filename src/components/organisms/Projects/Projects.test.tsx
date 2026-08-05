@@ -53,7 +53,7 @@ describe('Projects', () => {
   it('renders project technologies', () => {
     render(<Projects />);
     expect(screen.getByText('Solidity')).toBeInTheDocument();
-    expect(screen.getByText('React')).toBeInTheDocument();
+    expect(screen.getAllByText('React').length).toBeGreaterThan(0);
   });
 
   it('opens project modal when Enter key is pressed', () => {

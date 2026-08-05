@@ -10,7 +10,7 @@ describe('App Integration', () => {
 
   it('renders the header with navigation', () => {
     render(<App />);
-    expect(screen.getByText('Portfolio')).toBeInTheDocument();
+    expect(screen.getByText(/Edson\.dev - Portfólio/)).toBeInTheDocument();
   });
 
   it('renders the footer', () => {

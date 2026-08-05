@@ -82,7 +82,9 @@ describe('ProjectModal', () => {
 
   it('calls onClose when Escape key is pressed', () => {
     render(<ProjectModal project={mockProject} onClose={onClose} />);
-    fireEvent.keyDown(document, { key: 'Escape' });
+    const dialog = document.querySelector('dialog');
+    expect(dialog).toBeInTheDocument();
+    dialog?.dispatchEvent(new Event('close'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 

@@ -7,6 +7,7 @@ describe('contactFormSchema', () => {
     email: 'edson@example.com',
     assunto: 'Projeto',
     mensagem: 'Olá, gostaria de discutir um projeto.',
+    _timestamp: String(Date.now() - 5000),
   };
 
   it('validates correct data', () => {

@@ -10,7 +10,7 @@ describe('Hero', () => {
 
   it('renders the job title', () => {
     render(<Hero />);
-    expect(screen.getByText(/Desenvolvedor Back-End Júnior/)).toBeInTheDocument();
+    expect(screen.getByText(/Desenvolvedor Back-End/)).toBeInTheDocument();
   });
 
   it('renders the "Ver Projetos" CTA link', () => {

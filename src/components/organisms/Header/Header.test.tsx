@@ -5,7 +5,7 @@ import { Header } from './Header';
 describe('Header', () => {
   it('renders the portfolio title', () => {
     render(<Header />);
-    expect(screen.getByText('Portfolio')).toBeInTheDocument();
+    expect(screen.getByText(/Edson\.dev - Portfólio/)).toBeInTheDocument();
   });
 
   it('renders all navigation items in desktop', () => {
@@ -37,7 +37,7 @@ describe('Header', () => {
   it('toggles mobile menu when hamburger is clicked', () => {
     render(<Header />);
 
-    const menuButton = screen.getByLabelText('Toggle menu');
+    const menuButton = screen.getByLabelText('Abrir menu');
     fireEvent.click(menuButton);
 
     // Mobile menu should be visible
@@ -47,7 +47,7 @@ describe('Header', () => {
   it('shows Modo Claro in mobile menu when isDark is true', () => {
     render(<Header isDark={true} />);
 
-    const menuButton = screen.getByLabelText('Toggle menu');
+    const menuButton = screen.getByLabelText('Abrir menu');
     fireEvent.click(menuButton);
 
     expect(screen.getByText('☀️ Modo Claro')).toBeInTheDocument();

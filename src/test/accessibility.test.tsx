@@ -60,7 +60,9 @@ describe('Accessibility Tests', () => {
     });
     expect(results).toHaveNoViolations();
 
-    const visibleInputs = container.querySelectorAll('input:not([name="honeypot"]), textarea');
+    const visibleInputs = container.querySelectorAll(
+      'input:not([name="honeypot"]):not([type="hidden"]), textarea'
+    );
     visibleInputs.forEach((input) => {
       expect(input).toHaveAccessibleName();
     });
