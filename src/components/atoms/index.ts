@@ -1,6 +1,7 @@
 export { AnimatedSection } from './AnimatedSection';
 export { Button } from './Button';
 export type { ButtonProps } from './Button';
+export { GoogleAnalytics } from './GoogleAnalytics';
 export { Input } from './Input';
 export type { InputProps } from './Input';
 export { LazySection } from './LazySection';

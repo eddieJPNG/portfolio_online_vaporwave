@@ -1,25 +1,41 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
 import { Button, Input } from '../../atoms';
 import { AnimatedSection } from '../../atoms/AnimatedSection';
 import { contactFormSchema, type ContactFormData } from '../../../validations/contact';
 import { SITE_CONFIG } from '../../../utils/constants';
+import { useRateLimit } from '../../../hooks/useRateLimit';
 import chatIcon from '../../../assets/icons-decorative/chat.png';
 import heroStreet from '../../../assets/backgrounds/street.gif';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export const Contact = () => {
+  const { isLimited, remainingTime, attemptSubmit } = useRateLimit({
+    cooldownMs: 5000,
+    maxAttempts: 3,
+    windowMs: 60000,
+  });
+
   const [formData, setFormData] = useState<ContactFormData>({
     nome: '',
     email: '',
     assunto: '',
     mensagem: '',
     honeypot: '',
+    _timestamp: '0',
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [status, setStatus] = useState<FormStatus>('idle');
   const [touched, setTouched] = useState<Partial<Record<keyof ContactFormData, boolean>>>({});
+  const loadTimeRef = useRef(0);
+
+  const getTimestamp = useCallback(() => {
+    if (loadTimeRef.current === 0) {
+      loadTimeRef.current = Date.now();
+    }
+    return loadTimeRef.current;
+  }, []);
 
   const validateField = (name: keyof ContactFormData, value: string) => {
     const result = contactFormSchema.safeParse({ ...formData, [name]: value });
@@ -52,7 +68,17 @@ export const Contact = () => {
 
     if (formData.honeypot) return;
 
-    const result = contactFormSchema.safeParse(formData);
+    if (!attemptSubmit()) {
+      setErrors({
+        _timestamp: `Aguarde ${Math.ceil(remainingTime / 1000)} segundos antes de enviar novamente.`,
+      });
+      return;
+    }
+
+    const result = contactFormSchema.safeParse({
+      ...formData,
+      _timestamp: String(getTimestamp()),
+    });
     if (!result.success) {
       const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
       result.error.issues.forEach((issue) => {
@@ -84,7 +110,15 @@ export const Contact = () => {
         { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
       );
       setStatus('success');
-      setFormData({ nome: '', email: '', assunto: '', mensagem: '', honeypot: '' });
+      loadTimeRef.current = Date.now();
+      setFormData({
+        nome: '',
+        email: '',
+        assunto: '',
+        mensagem: '',
+        honeypot: '',
+        _timestamp: String(loadTimeRef.current),
+      });
       setTouched({});
       setErrors({});
     } catch {
@@ -133,10 +167,23 @@ export const Contact = () => {
               name="honeypot"
               value={formData.honeypot}
               onChange={handleChange}
-              className="hidden"
+              aria-hidden="true"
               tabIndex={-1}
               autoComplete="off"
+              style={{
+                position: 'absolute',
+                left: '-9999px',
+                width: '1px',
+                height: '1px',
+                padding: 0,
+                margin: '-1px',
+                overflow: 'hidden',
+                clip: 'rect(0, 0, 0, 0)',
+                whiteSpace: 'nowrap',
+                border: 0,
+              }}
             />
+            <input type="hidden" name="_timestamp" value={formData._timestamp} readOnly />
             <Input
               label="Nome"
               name="nome"
@@ -198,8 +245,17 @@ export const Contact = () => {
                 </p>
               )}
             </div>
-            <Button type="submit" className="w-full" size="lg" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Enviando...' : 'Enviar Mensagem'}
+            <Button
+              type="submit"
+              className="w-full"
+              size="lg"
+              disabled={status === 'sending' || isLimited}
+            >
+              {isLimited
+                ? `Aguarde ${Math.ceil(remainingTime / 1000)}s...`
+                : status === 'sending'
+                  ? 'Enviando...'
+                  : 'Enviar Mensagem'}
             </Button>
           </form>
           <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">

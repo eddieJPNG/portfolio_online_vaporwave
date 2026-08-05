@@ -3,7 +3,7 @@ import { PageTemplate } from './components/templates';
 import { useTheme } from './hooks/useTheme';
 import { Hero } from './components/organisms/Hero';
 import { Footer } from './components/organisms/Footer';
-import { LazySection } from './components/atoms';
+import { LazySection, GoogleAnalytics } from './components/atoms';
 import './styles/globals.css';
 
 const About = lazy(() =>
@@ -27,6 +27,7 @@ function App() {
 
   return (
     <PageTemplate onThemeToggle={toggleTheme} isDark={isDark}>
+      <GoogleAnalytics />
       <Hero />
       <LazySection>
         <About />

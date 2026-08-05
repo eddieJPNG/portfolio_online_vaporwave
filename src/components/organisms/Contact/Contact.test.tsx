@@ -35,9 +35,10 @@ describe('Contact', () => {
 
   it('renders honeypot field', () => {
     render(<Contact />);
-    const honeypot = screen.getByRole('textbox', { name: '' });
+    const honeypot = document.querySelector('input[name="honeypot"]');
     expect(honeypot).toBeInTheDocument();
-    expect(honeypot).toHaveClass('hidden');
+    expect(honeypot).toHaveAttribute('aria-hidden', 'true');
+    expect(honeypot).toHaveAttribute('tabindex', '-1');
   });
 
   it('renders email address info', () => {
